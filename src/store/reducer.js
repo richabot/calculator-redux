@@ -21,16 +21,22 @@ export const reducer =(state,action)=>{
             return {...state}
         }
         case MUL1:{
-            state.count=parseInt(state.count) * parseInt(action.payload);
+            // state.count=parseInt(state.count) * parseInt(action.payload);
+            if(state.count===0||action.payload==="")
+            {
+                state.count="Not possible"
+            }
+            else{ state.count=(state.count*action.payload);}
             return {...state};
         }
         case DIV1:{
-            if(state.count==0)
+            if(state.count===0||action.payload==="")
             {
-                console.log("not possible")
+                state.count="Not possible"
             }
-            state.count=(state.count/action.payload);
-            
+            else{ state.count=(state.count/action.payload);}
+           
+           
             return {...state}
         }
 
