@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 // eslint-disable-next-line
 import { add, substract,setx,ADD2,SUB2, MUL2, DIV2 } from './store/action';
 import { useState } from 'react';
-import { DIV1 } from './store/action.types';
 
 function App() {
   const dispatch=useDispatch();
@@ -21,7 +20,7 @@ function App() {
       <button onClick={()=>dispatch(ADD2(x))}>Add</button>
       <button onClick={()=>dispatch(SUB2(x))}>Substract</button>
       <button onClick={()=>dispatch(MUL2(x))}>MULTIPLY</button>
-      <button onClick={()=>dispatch({type:DIV1,payload:x})}>DIVIDE</button>
+      <button onClick={()=>dispatch(DIV2(x))}>DIVIDE</button>
       
     </div>
     </div>
