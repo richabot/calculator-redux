@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+// eslint-disable-next-line
+import { add, substract,setx,ADD2,SUB2, MUL2, DIV2 } from './store/action';
+import { useState } from 'react';
+import { DIV1 } from './store/action.types';
 
 function App() {
+  const dispatch=useDispatch();
+  // eslint-disable-next-line
+  const [x, setx] = useState(0)
+  const count =useSelector((state)=>state.count)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <h1>Counter :{count}</h1>
+    <div>
+    <input onChange={event => setx(event.target.value)} />
+      <button onClick={()=>dispatch(add())}>-</button>
+      <button onClick={()=>dispatch(substract())} >+</button>
+      <button onClick={()=>dispatch(ADD2(x))}>Add</button>
+      <button onClick={()=>dispatch(SUB2(x))}>Substract</button>
+      <button onClick={()=>dispatch(MUL2(x))}>MULTIPLY</button>
+      <button onClick={()=>dispatch({type:DIV1,payload:x})}>DIVIDE</button>
+      
+    </div>
     </div>
   );
 }
